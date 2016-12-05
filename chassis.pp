@@ -1,3 +1,3 @@
-class { 'memcache':
-	path => '/vagrant/extensions/memcache'
+class { 'memcached':
+	path => '/vagrant/extensions/memcached'
 }
