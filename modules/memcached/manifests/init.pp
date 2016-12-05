@@ -13,6 +13,6 @@ class memcached (
 
 	file { "${path}/local-config.php":
 		ensure => file,
-		content => template('memcache/local-config.php.erb'),
+		content => template('memcached/local-config.php.erb'),
 	}
 }
