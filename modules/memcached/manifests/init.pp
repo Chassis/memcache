@@ -1,5 +1,5 @@
-class memcache (
-	$path = "/vagrant/extensions/memcache"
+class memcached (
+	$path = "/vagrant/extensions/memcached"
 ) {
 	package { 'memcached':
 		ensure => latest
@@ -13,6 +13,6 @@ class memcache (
 
 	file { "${path}/local-config.php":
 		ensure => file,
-		content => template('memcache/local-config.php.erb'),
+		content => template('memcached/local-config.php.erb'),
 	}
 }
