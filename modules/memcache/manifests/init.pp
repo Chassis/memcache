@@ -1,16 +1,15 @@
 class memcache (
 	$path = "/vagrant/extensions/memcache",
-	$php_version
+	$memcache_config = sz_load_config()
 ) {
 	package { 'memcached':
 		ensure => latest
 	}
 
-	if versioncmp( "${php_version}", '5.4') <= 0 {
+	if versioncmp( "${memcache_config[php]}", '5.4') <= 0 {
 		$php_package = 'php5'
-	}
-	else {
-		$php_package = "php${php_version}"
+	} else {
+		$php_package = "php${memcache_config[php]}"
 	}
 
 	package { "${php_package}-memcache":
