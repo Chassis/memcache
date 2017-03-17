@@ -8,8 +8,10 @@ class memcache (
 
 	if versioncmp( "${memcache_config[php]}", '5.4') <= 0 {
 		$php_package = 'php5'
-	} else {
-		$php_package = "php${memcache_config[php]}"
+	}
+	else {
+	    $short_ver = regsubst($memcache_config['php'], '^(\d+\.\d+)\.\d+$', '\1')
+		$php_package = "php${short_ver}"
 	}
 
 	package { "${php_package}-memcache":
