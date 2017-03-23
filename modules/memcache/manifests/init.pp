@@ -11,7 +11,7 @@ class memcache (
     $php_package = 'php5'
   }
   else {
-      $short_ver = regsubst($memcache_config['php'], '^(\d+\.\d+)\.\d+$', '\1')
+    $short_ver = regsubst("${memcache_config[php]}", '^(\d+\.\d+)\.\d+$', '\1')
     $php_package = "php${short_ver}"
   }
 
