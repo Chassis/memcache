@@ -15,7 +15,7 @@ class memcache (
     $php_package = "php${short_ver}"
   }
 
-  package { "${php_package}-memcache":
+  package { ["${php_package}-memcache", "${php_package}-memcached"]:
     ensure  => latest,
     require => Package['memcached'],
     notify  => Service["${php_package}-fpm"]
