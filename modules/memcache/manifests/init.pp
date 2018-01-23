@@ -20,9 +20,4 @@ class memcache (
     require => Package['memcached'],
     notify  => Service["${php_package}-fpm"]
   }
-
-  file { "${path}/local-config.php":
-    ensure  => file,
-    content => template('memcache/local-config.php.erb'),
-  }
 }
