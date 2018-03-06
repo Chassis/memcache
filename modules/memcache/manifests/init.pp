@@ -1,16 +1,16 @@
 # A Chassis extension to install and configure memcached on your server.
 class memcache (
+	$config,
 	$path = '/vagrant/extensions/memcache',
-	$memcache_config = sz_load_config()
 ) {
 	package { 'memcached':
 		ensure => latest
 	}
 
-	if versioncmp( $memcache_config[php], '5.4') <= 0 {
+	if versioncmp( $config[php], '5.4') <= 0 {
 		$php_package = 'php5'
 	} else {
-		$short_ver = regsubst($memcache_config[php], '^(\d+\.\d+)\.\d+$', '\1')
+		$short_ver = regsubst($config[php], '^(\d+\.\d+)\.\d+$', '\1')
 		$php_package = "php${short_ver}"
 	}
 
