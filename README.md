@@ -10,7 +10,7 @@ A Chassis extension to install and configure memcached on your server.
 
 ```php
 <?php
-if ( ! empty( $GLOBALS['memcached_servers'] ) )
+if ( ! empty( $GLOBALS['memcached_servers'] ) && class_exists( 'Memcache' ) )
 	require_once dirname( ABSPATH ) . '/extensions/memcache/object-cache.php';
 ```
 

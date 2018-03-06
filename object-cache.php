@@ -364,7 +364,7 @@ class WP_Object_Cache {
 		//error_log("Connection failure for $host:$port\n", 3, '/tmp/memcached.txt');
 	}
 
-	function WP_Object_Cache() {
+	function __construct() {
 		global $memcached_servers;
 
 		if ( isset($memcached_servers) )

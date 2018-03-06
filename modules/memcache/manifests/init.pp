@@ -3,20 +3,27 @@ class memcache (
 	$config,
 	$path = '/vagrant/extensions/memcache',
 ) {
+
+	if ( ! empty( $config[disabled_extensions] ) and 'chassis/memcache' in $config[disabled_extensions] ) {
+		$package = absent
+	} else {
+		$package = latest
+	}
+
 	package { 'memcached':
-		ensure => latest
+		ensure => $package
 	}
 
 	if versioncmp( $config[php], '5.4') <= 0 {
 		$php_package = 'php5'
 	} else {
 		$short_ver = regsubst($config[php], '^(\d+\.\d+)\.\d+$', '\1')
-		$php_package = "php${short_ver}"
+		$php_package = 'php'
 	}
 
 	package { ["${php_package}-memcache", "${php_package}-memcached"]:
-		ensure  => latest,
+		ensure  => $package,
 		require => Package['memcached'],
-		notify  => Service["${php_package}-fpm"]
+		notify  => Service["php${short_ver}-fpm"]
 	}
 }
