@@ -22,3 +22,4 @@ A Chassis extension to install and configure memcached on your server.
     
     #### For memcached
     `$memcached_servers = [ [ '127.0.0.1', 11211 ] ];`
+5. Make sure you set `define( 'WP_CACHE', true );` in your root `local-config.php`.
